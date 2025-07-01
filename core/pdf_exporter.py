@@ -125,7 +125,7 @@
 
 
 
-# import pdfkit
+from weasyprint import HTML
 import base64
 import os
 from io import BytesIO
@@ -223,9 +223,7 @@ def export_pdf_with_style(score, matched, total, matched_keywords, missing_keywo
     </html>
     """
 
-    # config = pdfkit.configuration(wkhtmltopdf=r"D:\JobGenie\wkhtmltopdf\bin\wkhtmltopdf.exe")
-    pdf_bytes = pdfkit.from_string(html_content, False, configuration=config)
-    b64_pdf = base64.b64encode(pdf_bytes).decode('utf-8')
-
-    download_link = f'<a href="data:application/pdf;base64,{b64_pdf}" download="JobGenie_Styled_Report.pdf">📥 Download the PDF</a>'
+    pdf_file = HTML(string=html_content).write_pdf()
+    b64_pdf = base64.b64encode(pdf_file).decode("utf-8")
+    download_link = f'<a href="data:application/pdf;base64,{b64_pdf}" download="JobGenie_Report.pdf">📥 Download the PDF</a>'
     return download_link
