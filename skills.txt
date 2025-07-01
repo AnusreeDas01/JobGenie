@@ -1,0 +1,112 @@
+python
+sql
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+openai
+api
+flask
+fastapi
+streamlit
+dash
+gradio
+llm
+langchain
+prompt engineering
+generative ai
+machine learning
+deep learning
+xgboost
+lightgbm
+tensorflow
+keras
+pytorch
+nlp
+spacy
+nltk
+text classification
+named entity recognition
+transformers
+embedding
+semantic search
+vector database
+retrieval augmented generation
+fine-tuning
+model evaluation
+model deployment
+feature engineering
+data preprocessing
+data cleaning
+data visualization
+classification
+regression
+clustering
+cross validation
+hyperparameter tuning
+confusion matrix
+precision
+recall
+f1 score
+data pipelines
+etl
+airflow
+dbt
+data warehouse
+bigquery
+redshift
+snowflake
+azure data factory
+apache spark
+hadoop
+kafka
+aws
+azure
+gcp
+docker
+kubernetes
+linux
+git
+github
+ci/cd
+jenkins
+terraform
+bash
+command line
+looker
+powerbi
+tableau
+superset
+data modeling
+stored procedures
+joins
+relational databases
+mongodb
+postgresql
+mysql
+json
+rest api
+graphql
+unit testing
+pytest
+object oriented programming
+functional programming
+data analysis
+time series forecasting
+opencv
+computer vision
+agile
+scrum
+communication
+problem solving
+teamwork
+collaboration
+attention to detail
+critical thinking
+remote work
+freelancing
+internship
+projects
+full-time
+part-time

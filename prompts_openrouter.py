@@ -1,0 +1,73 @@
+import os
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()
+api_key = os.getenv("OPENROUTER_API_KEY")
+
+headers = {
+    "Authorization": f"Bearer {api_key}",
+    "Content-Type": "application/json"
+}
+
+def get_resume_feedback(resume_text, jd_text):
+    prompt = f"""
+You are an expert AI career assistant.
+
+Analyze the following RESUME and JOB DESCRIPTION.
+
+Respond strictly in the following numbered format:
+
+1. Skills Missing:
+List 3–5 important skills mentioned in the JD that are not found in the resume.
+
+2. Suggestions to Improve Resume:
+Give 2–3 specific tips to improve the resume for this job.
+
+3. Rewritten Resume Bullet:
+Pick a weak bullet from the resume and rewrite it using numbers or measurable outcomes.
+
+--- RESUME ---
+{resume_text}
+
+--- JOB DESCRIPTION ---
+{jd_text}
+"""
+
+    data = {
+        "model": "mistralai/mistral-7b-instruct",  # or try llama3, gpt-3.5, etc.
+        "messages": [
+            {"role": "system", "content": "You are a helpful AI resume coach."},
+            {"role": "user", "content": prompt}
+        ]
+    }
+
+    response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=data)
+    return response.json()["choices"][0]["message"]["content"]
+
+def generate_career_summary(resume_text, jd_text):
+    prompt = f"""
+Write a 3–4 line **professional career summary** based on the following resume and job description.
+
+It should:
+- Highlight relevant skills and experience
+- Match the tone of the job description
+- Sound confident and job-ready
+
+--- RESUME ---
+{resume_text}
+
+--- JOB DESCRIPTION ---
+{jd_text}
+"""
+
+    data = {
+        "model": "mistralai/mistral-7b-instruct",
+        "messages": [
+            {"role": "system", "content": "You are a professional resume writer."},
+            {"role": "user", "content": prompt}
+        ]
+    }
+
+    response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=data)
+    return response.json()["choices"][0]["message"]["content"]
