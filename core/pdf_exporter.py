@@ -152,6 +152,13 @@ class PDF(FPDF):
             self.multi_cell(0, 8, str(content))
 
         self.ln(3)
+pdf = PDF()
+
+# 👇 REGISTER FONT before doing anything else
+pdf.add_font("DejaVu", "", "core/DejaVuSans.ttf", uni=True)
+pdf.add_font("DejaVu", "B", "core/DejaVuSans.ttf", uni=True)
+
+pdf.add_page()  # ✅ After fonts are registered
 
 def export_pdf_with_style(score, matched, total, matched_keywords, missing_keywords, summary, skill_gap, suggestions, rewritten):
     pdf = PDF()
