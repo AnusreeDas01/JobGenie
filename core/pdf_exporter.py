@@ -199,26 +199,28 @@ def export_pdf_with_style(score, matched, total, matched_keywords, missing_keywo
             #     margin-bottom: 10px;
             # }}
             body {{
-                font-family: Helvetica, sans-serif;
-                font-size: 12pt;
-                padding: 20px;
-                color: #000;
+                font-family: Helvetica;
+                font-size: 12px;
+                color: #000000;
             }}
             h1 {{
+                font-size: 18px;
                 text-align: center;
-                font-size: 18pt;
-                margin-bottom: 20px;
             }}
             h2 {{
-                font-size: 14pt;
-                margin-top: 20px;
-                margin-bottom: 10px;
+                font-size: 14px;
+                margin-top: 12px;
+                margin-bottom: 6px;
             }}
             ul {{
-                margin-left: 20px;
+                margin-left: 15px;
+                padding-left: 5px;
+            }}
+            li {{
+                margin-bottom: 4px;
             }}
             p {{
-                margin-bottom: 10px;
+                margin: 4px 0;
             }}
         </style>
     </head>
