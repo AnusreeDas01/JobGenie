@@ -8,7 +8,8 @@ import streamlit as st
 from streamlit_lottie import st_lottie
 
 from core.matcher import keyword_match_score
-from core.pdf_exporter import export_pdf_with_style
+# from core.pdf_exporter import export_pdf_with_style
+from core.pdf_exporter import download_report_as_html
 from core.skills_loader import filter_skills_by_jd, load_skills_from_file
 from jd_parser import extract_text_from_txt
 from prompts_openrouter import generate_career_summary, get_resume_feedback
