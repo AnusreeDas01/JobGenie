@@ -174,30 +174,6 @@ def export_pdf_with_style(score, matched, total, matched_keywords, missing_keywo
     <html>
     <head>
         <style>
-            # body {{
-            #     font-family:Arial, sans-serif;
-            #     font-size: 14px;
-            #     padding: 2rem;
-            #     color: #333;
-            # }}
-            # h1 {{
-            #     text-align: center;
-            #     font-size: 24px;
-            #     color: black;
-            # }}
-            # h2 {{
-            #     font-size: 20px;
-            #     color: #555;
-            #     border-bottom: 1px solid #ccc;
-            #     padding-bottom: 4px;
-            #     margin-top: 30px;
-            # }}
-            # .matched {{ color: green; }}
-            # .missing {{ color: red; }}
-            # ul {{ padding-left: 1.4rem; }}
-            # p {{
-            #     margin-bottom: 10px;
-            # }}
             body {{
                 font-family: Helvetica;
                 font-size: 12px;
