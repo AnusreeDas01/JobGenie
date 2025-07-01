@@ -8,7 +8,8 @@ import streamlit as st
 from streamlit_lottie import st_lottie
 
 from core.matcher import keyword_match_score
-from core.pdf_exporter import export_pdf_with_style
+from core.pdf_exporter import render_html_report
+
 from core.skills_loader import filter_skills_by_jd, load_skills_from_file
 from jd_parser import extract_text_from_txt
 from prompts_openrouter import generate_career_summary, get_resume_feedback
@@ -146,10 +147,9 @@ if resume_file and jd_file:
     with open("analysis_log.json", "w") as f:
         json.dump(session_data, f)
 
-        pdf_link = export_pdf_with_style(score, matched_count, total_keywords, matched_keywords, missing_keywords, summary, skill_gap, suggestions, rewritten)
+        report_html = render_html_report(score, matched_count, total_keywords, matched_keywords, missing_keywords, summary, skill_gap, suggestions, rewritten)
         st.markdown("### 📄 Downloadable Report")
-        st.markdown(pdf_link, unsafe_allow_html=True)
-
+        st.markdown(report_html, unsafe_allow_html=True)
 
 else:
     st.info("👆 Upload both resume and job description to begin.")
