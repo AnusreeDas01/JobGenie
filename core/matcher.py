@@ -48,7 +48,7 @@ def load_skills_from_file(file_path="skills.txt"):
         return [line.strip().lower() for line in f if line.strip()]
 
 # ✅ Filter skills relevant to the JD only
-def filter_skills_by_jd(skills, jd_text):
+def filter_skills_by_jd(skills, jd_text, threshold=75):
     jd_text = jd_text.lower()
     return [skill for skill in skills if skill in jd_text]
 # def filter_skills_by_jd(skills_list, jd_text, threshold=90):
@@ -64,7 +64,7 @@ def clean_text(text):
     return text.lower().replace("\n", " ").strip()
 
 # ✅ Fuzzy match resume against JD-relevant skills
-def keyword_match_score(resume_text, keywords, threshold=90):
+def keyword_match_score(resume_text, keywords, threshold=75):
     resume_text = clean_text(resume_text)
     matched = []
 
