@@ -125,7 +125,7 @@
 
 
 
-from weasyprint import HTML
+
 import base64
 import os
 from io import BytesIO

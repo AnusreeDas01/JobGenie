@@ -1,6 +1,4 @@
 streamlit
-weasyprint>=60.1
-fpdf
 PyPDF2
 pdfplumber
 rapidfuzz
