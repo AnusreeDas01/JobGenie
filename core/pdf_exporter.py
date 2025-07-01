@@ -126,12 +126,10 @@
 
 
 
-from xhtml2pdf import pisa
-from io import BytesIO
+import streamlit as st
 import base64
 from datetime import datetime
 import re
-
 
 def convert_to_html_list(content):
     html = ""
@@ -169,35 +167,33 @@ def convert_to_html_list(content):
 
     return html
 
-def export_pdf_with_style(score, matched, total, matched_keywords, missing_keywords, summary, skill_gap, suggestions, rewritten):
+
+def generate_html_report(score, matched, total, matched_keywords, missing_keywords, summary, skill_gap, suggestions, rewritten):
     html = f"""
     <html>
     <head>
         <style>
             body {{
-                font-family: Helvetica;
-                font-size: 12px;
-                color: #000000;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                padding: 2rem;
+                color: #333;
             }}
             h1 {{
-                font-size: 18px;
                 text-align: center;
+                font-size: 24px;
+                color: black;
             }}
             h2 {{
-                font-size: 14px;
-                margin-top: 12px;
-                margin-bottom: 6px;
+                font-size: 20px;
+                color: #555;
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 4px;
+                margin-top: 30px;
             }}
-            ul {{
-                margin-left: 15px;
-                padding-left: 5px;
-            }}
-            li {{
-                margin-bottom: 4px;
-            }}
-            p {{
-                margin: 4px 0;
-            }}
+            ul {{ padding-left: 1.2rem; }}
+            li {{ margin-bottom: 6px; }}
+            p {{ margin-bottom: 10px; }}
         </style>
     </head>
     <body>
@@ -205,9 +201,10 @@ def export_pdf_with_style(score, matched, total, matched_keywords, missing_keywo
         <h2>Match Score</h2>
         <p>{score}% ({matched}/{total} skills matched)</p>
 
-        <h2 class="matched">Matched Skills</h2>
+        <h2>Matched Skills</h2>
         {convert_to_html_list(matched_keywords)}
-        <h2 class="missing">Missing Skills</h2>
+
+        <h2>Missing Skills</h2>
         {convert_to_html_list(missing_keywords)}
 
         <h2>Career Summary</h2>
@@ -226,11 +223,11 @@ def export_pdf_with_style(score, matched, total, matched_keywords, missing_keywo
     </body>
     </html>
     """
+    return html
 
-    buffer = BytesIO()
-    pisa.CreatePDF(src=html, dest=buffer)
-    buffer.seek(0)
 
-    b64_pdf = base64.b64encode(buffer.read()).decode("utf-8")
-    download_link = f'<a href="data:application/pdf;base64,{b64_pdf}" download="JobGenie_Report.pdf">📥 Download the PDF</a>'
-    return download_link
+def download_report_as_html(score, matched, total, matched_keywords, missing_keywords, summary, skill_gap, suggestions, rewritten):
+    html = generate_html_report(score, matched, total, matched_keywords, missing_keywords, summary, skill_gap, suggestions, rewritten)
+    b64 = base64.b64encode(html.encode()).decode()
+    href = f'<a href="data:text/html;base64,{b64}" download="JobGenie_Report.html">📥 Download Report (HTML)</a>'
+    return href

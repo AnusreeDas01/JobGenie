@@ -146,9 +146,18 @@ if resume_file and jd_file:
     with open("analysis_log.json", "w") as f:
         json.dump(session_data, f)
 
-        pdf_link = export_pdf_with_style(score, matched_count, total_keywords, matched_keywords, missing_keywords, summary, skill_gap, suggestions, rewritten)
+        # pdf_link = export_pdf_with_style(score, matched_count, total_keywords, matched_keywords, missing_keywords, summary, skill_gap, suggestions, rewritten)
+        # st.markdown("### 📄 Downloadable Report")
+        # st.markdown(pdf_link, unsafe_allow_html=True)
+        pdf_link = download_report_as_html(
+            score, matched_count, total_keywords,
+            matched_keywords, missing_keywords,
+            summary, skill_gap, suggestions, rewritten
+        )
+
         st.markdown("### 📄 Downloadable Report")
         st.markdown(pdf_link, unsafe_allow_html=True)
+
 
 
 else:
