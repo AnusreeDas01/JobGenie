@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 import streamlit as st
 load_dotenv()
-api_key = os.getenv("OPENROUTER_API_KEY") or st.secrets["OPENROUTER_API_KEY"]
+api_key = st.secrets["OPENROUTER_API_KEY"]
 
 
 headers = {
@@ -47,22 +47,22 @@ Pick a weak bullet from the resume and rewrite it using numbers or measurable ou
         ]
     }
 
-    response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=data)
-    return response.json()["choices"][0]["message"]["content"]
+    # response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=data)
+    # return response.json()["choices"][0]["message"]["content"]
 
-    # try:
-    #     response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=data)
-    #     result = response.json()
+    try:
+        response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=data)
+        result = response.json()
 
-    #     if "choices" in result and result["choices"]:
-    #         return result["choices"][0]["message"]["content"]
-    #     elif "error" in result:
-    #         return f"❌ OpenRouter Error: {result['error']['message']}"
-    #     else:
-    #         return "❌ Unexpected API response. No feedback received."
+        if "choices" in result and result["choices"]:
+            return result["choices"][0]["message"]["content"]
+        elif "error" in result:
+            return f"❌ OpenRouter Error: {result['error']['message']}"
+        else:
+            return "❌ Unexpected API response. No feedback received."
 
-    # except Exception as e:
-    #     return f"❌ API Call Failed: {e}"
+    except Exception as e:
+        return f"❌ API Call Failed: {e}"
 
 
 def generate_career_summary(resume_text, jd_text):
