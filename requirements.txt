@@ -1,0 +1,7 @@
+streamlit
+pdfkit
+fpdf
+PyPDF2
+rapidfuzz
+scikit-learn
+pandas
