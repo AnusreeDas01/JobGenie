@@ -229,5 +229,5 @@ def generate_html_report(score, matched, total, matched_keywords, missing_keywor
 def download_report_as_html(score, matched, total, matched_keywords, missing_keywords, summary, skill_gap, suggestions, rewritten):
     html = generate_html_report(score, matched, total, matched_keywords, missing_keywords, summary, skill_gap, suggestions, rewritten)
     b64 = base64.b64encode(html.encode()).decode()
-    href = f'<a href="data:text/html;base64,{b64}" download="JobGenie_Report.html">📥 Download Report (HTML)</a>'
+    href = f'<a href="data:text/html;base64,{b64}" download="JobGenie_Report.html">📥 Download the Report</a>'
     return href

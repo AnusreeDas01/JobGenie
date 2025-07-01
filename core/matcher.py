@@ -48,9 +48,16 @@ def load_skills_from_file(file_path="skills.txt"):
         return [line.strip().lower() for line in f if line.strip()]
 
 # ✅ Filter skills relevant to the JD only
-def filter_skills_by_jd(skills, jd_text):
+# def filter_skills_by_jd(skills, jd_text):
+#     jd_text = jd_text.lower()
+#     return [skill for skill in skills if skill in jd_text]
+def filter_skills_by_jd(skills_list, jd_text, threshold=85):
     jd_text = jd_text.lower()
-    return [skill for skill in skills if skill in jd_text]
+    relevant_skills = []
+    for skill in skills_list:
+        if fuzz.partial_ratio(skill, jd_text) >= threshold:
+            relevant_skills.append(skill)
+    return relevant_skills
 
 # ✅ Clean plain text (normalize)
 def clean_text(text):

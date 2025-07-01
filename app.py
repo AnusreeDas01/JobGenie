@@ -72,10 +72,10 @@ if resume_file and jd_file:
         skills_list = load_skills_from_file("skills.txt")
 
         # Filter only JD-relevant ones
-        jd_skills = filter_skills_by_jd(skills_list, jd_text)
+        jd_skills = filter_skills_by_jd(skills_list, jd_text, threshold=85)
 
         # Fuzzy match resume against those JD-relevant skills
-        score, matched_count, total_keywords, matched_keywords = keyword_match_score(resume_text, jd_skills)
+        score, matched_count, total_keywords, matched_keywords = keyword_match_score(resume_text, jd_skills, threshold=85)
 
         # Get missing
         missing_keywords = list(set(jd_skills) - set(matched_keywords))
