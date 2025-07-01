@@ -5,3 +5,4 @@ PyPDF2
 rapidfuzz
 scikit-learn
 pandas
+streamlit-lottie
