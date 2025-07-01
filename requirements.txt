@@ -7,3 +7,4 @@ rapidfuzz
 scikit-learn
 pandas
 streamlit-lottie
+python-dotenv
