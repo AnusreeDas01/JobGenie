@@ -123,7 +123,7 @@
 #     return download_link
 
 
-from fpdf import FPDF
+from fpdf2 import FPDF
 from datetime import datetime
 import base64
 import os
