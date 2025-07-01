@@ -51,7 +51,7 @@ def load_skills_from_file(file_path="skills.txt"):
 # def filter_skills_by_jd(skills, jd_text):
 #     jd_text = jd_text.lower()
 #     return [skill for skill in skills if skill in jd_text]
-def filter_skills_by_jd(skills_list, jd_text, threshold=85):
+def filter_skills_by_jd(skills_list, jd_text, threshold=90):
     jd_text = jd_text.lower()
     relevant_skills = []
     for skill in skills_list:
