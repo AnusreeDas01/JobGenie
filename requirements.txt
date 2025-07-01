@@ -2,6 +2,7 @@ streamlit
 pdfkit
 fpdf
 PyPDF2
+pdfplumber
 rapidfuzz
 scikit-learn
 pandas
