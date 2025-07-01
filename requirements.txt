@@ -1,5 +1,6 @@
 streamlit
-fpdf2
+pdfkit
+fpdf
 PyPDF2
 pdfplumber
 rapidfuzz
